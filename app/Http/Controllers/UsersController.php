@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -25,7 +26,11 @@ class UsersController extends Controller
       ]);
 
 
-      User::create($attributes);
+      User::create([
+        'name' => $attributes['name'],
+        'email' => $attributes['email'],
+        'password' => Hash::make($attributes['password']),
+      ]);
 
       return redirect('/users');
     }

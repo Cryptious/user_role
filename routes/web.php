@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::resource('/users','UsersController');
 Route::resource('/rolenames','RoleNamesController');
 Route::resource('/userroles','UserRolesController');
+
+Auth::routes();
+
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
